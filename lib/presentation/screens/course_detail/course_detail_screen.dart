@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../domain/models/models.dart';
 import '../../../logic/logic.dart';
 import '../../common_widgets/common_widgets.dart';
 
 class CourseDetailScreen extends StatefulWidget {
+  static var name = 'course_detail_screen';
+
   const CourseDetailScreen({super.key});
 
   @override
@@ -33,7 +36,7 @@ class _CourseDetailScreenState extends State<CourseDetailScreen> {
               BlocProvider.of<CoursesCubit>(contex).emitFetchCourses(
                 settingsState.isAvailableConnection,
               );
-              Navigator.pop(contex);
+              context.pop();
             }
           },
           child: Scaffold(

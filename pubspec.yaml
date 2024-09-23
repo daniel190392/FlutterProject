@@ -30,6 +30,7 @@ dependencies:
   flutter_keychain: ^2.5.0
   tuple: ^2.0.2
   mockito: ^5.4.4
+  go_router: ^14.2.7
 
 dev_dependencies:
   flutter_test:

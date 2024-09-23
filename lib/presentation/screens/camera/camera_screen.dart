@@ -1,11 +1,14 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../logic/logic.dart';
 import '../../common_widgets/common_widgets.dart';
 
 class CameraScreen extends StatefulWidget {
+  static var name = 'camera_screen';
+
   const CameraScreen({super.key});
 
   @override
@@ -26,7 +29,7 @@ class _CameraScreenState extends State<CameraScreen> {
               if (state is CameraCaptureSuccess) {
                 BlocProvider.of<UserProfileCubit>(context)
                     .emitEditAvatar(state.avatarImage);
-                Navigator.pop(context);
+                context.pop();
               }
             },
             builder: (context, state) {

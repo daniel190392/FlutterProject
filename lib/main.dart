@@ -7,17 +7,11 @@ import 'presentation/presentation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
-  runApp(MyApp(
-    appRouter: AppRouter(),
-  ));
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final AppRouter appRouter;
-  const MyApp({
-    super.key,
-    required this.appRouter,
-  });
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -33,10 +27,9 @@ class MyApp extends StatelessWidget {
           create: (context) => SettingsCubit(),
         ),
       ],
-      child: MaterialApp(
+      child: MaterialApp.router(
         title: 'Continental',
-        onGenerateRoute: appRouter.onGenerateRoute,
-        initialRoute: '/',
+        routerConfig: appRouter,
         theme: ColorTheme.fetchColorScheme(),
         darkTheme: ColorTheme.fetchDarkColorScheme(),
       ),

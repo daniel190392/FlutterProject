@@ -1,8 +1,10 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
+import 'package:continental_app/presentation/screens/screens.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../logic/logic.dart';
 
@@ -20,7 +22,7 @@ class Avatar extends StatelessWidget {
         return InkWell(
           onTap: () {
             if (state.isAvailableConnection) {
-              Navigator.pushNamed(context, '/camera');
+              context.pushNamed(CameraScreen.name);
             }
           },
           child: Stack(

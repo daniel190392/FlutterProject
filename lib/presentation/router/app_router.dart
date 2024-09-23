@@ -1,35 +1,47 @@
-import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:tuple/tuple.dart';
 
 import '../screens/screens.dart';
 
-class AppRouter {
-  Route onGenerateRoute(RouteSettings routeSettings) {
-    final arguments = routeSettings.arguments;
-    switch (routeSettings.name) {
-      case '/':
-        return MaterialPageRoute(builder: (_) => const CoursesScreen());
-      case '/detail':
-        return MaterialPageRoute(builder: (_) => const CourseDetailScreen());
-      case '/user':
-        return MaterialPageRoute(builder: (_) => const UserProfileScreen());
-      case '/settings':
-        return MaterialPageRoute(builder: (_) => const SettingsScreen());
-      case '/camera':
-        return MaterialPageRoute(builder: (_) => const CameraScreen());
-      case '/map':
-        if (arguments is Tuple3<double?, double?, String?>) {
-          return MaterialPageRoute(
-              builder: (_) => MapScreen(
-                    latitude: arguments.item1,
-                    longitude: arguments.item2,
-                    address: arguments.item3,
-                  ));
-        } else {
-          return MaterialPageRoute(builder: (_) => const CoursesScreen());
-        }
-      default:
-        return MaterialPageRoute(builder: (_) => const CoursesScreen());
-    }
-  }
-}
+final appRouter = GoRouter(
+  initialLocation: '/',
+  routes: [
+    GoRoute(
+      path: '/',
+      name: CoursesScreen.name,
+      builder: (context, state) => const CoursesScreen(),
+    ),
+    GoRoute(
+      path: '/detail',
+      name: CourseDetailScreen.name,
+      builder: (context, state) => const CourseDetailScreen(),
+    ),
+    GoRoute(
+      path: '/user',
+      name: UserProfileScreen.name,
+      builder: (context, state) => const UserProfileScreen(),
+    ),
+    GoRoute(
+      path: '/settings',
+      name: SettingsScreen.name,
+      builder: (context, state) => const SettingsScreen(),
+    ),
+    GoRoute(
+      path: '/camera',
+      name: CameraScreen.name,
+      builder: (context, state) => const CameraScreen(),
+    ),
+    GoRoute(
+      path: '/map',
+      name: MapScreen.name,
+      builder: (context, state) {
+        final location = state.extra as Tuple3<double?, double?, String?>;
+        return MapScreen(
+          latitude: location.item1,
+          longitude: location.item2,
+          address: location.item3,
+        );
+      },
+    ),
+  ],
+);

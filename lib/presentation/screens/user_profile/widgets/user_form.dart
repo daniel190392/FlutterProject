@@ -1,7 +1,9 @@
 import 'dart:async';
 
+import 'package:continental_app/presentation/screens/screens.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:tuple/tuple.dart';
 
 import '../../../../logic/logic.dart';
@@ -123,10 +125,9 @@ class _UserFormState extends State<UserForm> {
   }
 
   _goToMap(double? latitude, double? longitude, String? address) async {
-    await Navigator.pushNamed(
-      context,
-      '/map',
-      arguments: Tuple3(
+    await context.pushNamed(
+      MapScreen.name,
+      extra: Tuple3(
         latitude,
         longitude,
         address,

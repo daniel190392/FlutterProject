@@ -2,6 +2,7 @@ import 'package:continental_app/logic/logic.dart';
 import 'package:continental_app/presentation/common_widgets/common_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class LoginModal extends StatefulWidget {
   const LoginModal({super.key});
@@ -49,7 +50,7 @@ class _LoginModalState extends State<LoginModal> {
                 BlocProvider.of<CoursesCubit>(context).emitFetchCourses(
                   settingsState.isAvailableConnection,
                 );
-                Navigator.pop(context);
+                context.pop();
               }
             },
             builder: (context, state) {

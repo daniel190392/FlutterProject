@@ -1,9 +1,13 @@
+import 'package:go_router/go_router.dart';
+
 import '../../../logic/logic.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MapScreen extends StatefulWidget {
+  static var name = 'map_screen';
+
   final double? latitude;
   final double? longitude;
   final String? address;
@@ -50,7 +54,7 @@ class _MapScreenState extends State<MapScreen> {
             state.location.latitude,
             state.location.longitude,
           );
-          Navigator.pop(context);
+          context.pop();
         }
       },
       builder: (context, state) {

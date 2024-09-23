@@ -1,8 +1,11 @@
 import 'package:continental_app/logic/logic.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class SettingsScreen extends StatefulWidget {
+  static var name = 'settings_screen';
+
   const SettingsScreen({super.key});
 
   @override
@@ -25,7 +28,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 BlocProvider.of<CoursesCubit>(context).emitFetchCourses(
                   state.isAvailableConnection,
                 );
-                Navigator.pop(context);
+                context.pop();
               },
             ),
           ),

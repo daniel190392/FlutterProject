@@ -7,6 +7,8 @@ import 'widgets/avatat.dart';
 import 'widgets/user_form.dart';
 
 class UserProfileScreen extends StatefulWidget {
+  static var name = 'user_profile_screen';
+
   const UserProfileScreen({super.key});
 
   @override

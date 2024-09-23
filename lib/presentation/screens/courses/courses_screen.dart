@@ -1,4 +1,6 @@
 import 'package:continental_app/presentation/screens/login/login_modal.dart';
+import 'package:continental_app/presentation/screens/screens.dart';
+import 'package:go_router/go_router.dart';
 
 import 'widgets/courses_header.dart';
 import 'widgets/courses_list.dart';
@@ -9,6 +11,8 @@ import '../../../logic/logic.dart';
 import '../../common_widgets/common_widgets.dart';
 
 class CoursesScreen extends StatefulWidget {
+  static var name = 'courses_screen';
+
   const CoursesScreen({super.key});
 
   @override
@@ -42,13 +46,13 @@ class _CoursesScreenState extends State<CoursesScreen> {
     return [
       IconButton(
         onPressed: () {
-          Navigator.of(context).pushNamed('/user');
+          context.pushNamed(UserProfileScreen.name);
         },
         icon: const Icon(Icons.person),
       ),
       IconButton(
         onPressed: () {
-          Navigator.of(context).pushNamed('/settings');
+          context.pushNamed(SettingsScreen.name);
         },
         icon: const Icon(Icons.settings),
       )
@@ -66,7 +70,7 @@ class _CoursesScreenState extends State<CoursesScreen> {
             state.course,
             state.isNewCourse,
           );
-          Navigator.of(context).pushNamed('/detail');
+          context.pushNamed(CourseDetailScreen.name);
         }
       },
       builder: (context, state) {
